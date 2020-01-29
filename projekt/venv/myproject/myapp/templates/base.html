@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>CinemaLand</title>
+</head>
+<body>
+{% extends "navigationbar.html" %}
+{% block content %}
+<div class="row h-100 justify-content-center align-items-center">
+<div id="demo" class="carousel slide  bg-dark shadow-lg w-50 mt-3 p-5" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for movie in movies %}
+        <div class="carousel-item{% if forloop.first %} active{% endif %}" >
+            <a href="{% url 'shows' movie.id%}"><img src="{{ movie.image.url}}" height="360" width="640">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>{{movie.title}}</h1>
+                <p>{{movie.description}}</p>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</div>
+</body>
+</html>

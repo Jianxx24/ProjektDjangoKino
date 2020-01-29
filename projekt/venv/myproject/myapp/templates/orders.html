@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CinemaLand: Zamówienia</title>
+</head>
+<body>
+{% extends "navigationbar.html" %}
+{% block content %}
+<form class="rounded-lg text-white mt-3 p-3 container w-25 shadow-lg bg-dark form-group" method="post">
+     {% csrf_token %}
+    {% for order in orderse %}
+
+    <div class="mt-1 p-5 container border border-white p-2"><span>{{order.ticket.show.movie.title}} - {{order.ticket.show.date}} - {{order.ticket.seat.pos_x}} </span>
+    <button class="float-right btn btn-secondary" type="checkbox" name="delete" value="{{order.id}}"><span class="octicon octicon-trashcan"></span></button>
+    </div>
+    {% endfor %}
+    <a href="{% url 'mytickets'%}">
+    <button class="btn btn-secondary m-2" type="submit" name="submit" value="no">Zamawiam!</button>
+        </a>
+</form>
+{% endblock %}
+
+</body>
+</html>

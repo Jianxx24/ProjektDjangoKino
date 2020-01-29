@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CinemaLand: Moje Bilety</title>
+</head>
+<body>
+{% extends "navigationbar.html" %}
+{% block content %}
+<div class="card-group card-columns px-md-5 p-2">
+{% for order in orderse %}
+<div class="border card m-2" style="width: 18rem;">
+  <img class="card-img-top" src="{{order.ticket.show.movie.image.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{order.ticket.show.movie.title}}</h5>
+    <p class="card-text">{{order.ticket.show.movie.description}}<br>
+    {{order.ticket.show.date}}<br>
+    Miejsce - {{order.ticket.seat.pos_x}}</p>
+
+    <a href="{% url 'shows' order.ticket.show.movie.id%}" class="btn btn-secondary">Więcej</a>
+  </div>
+     <div class="card-footer text-muted">{{order.date_ordered}}</div>
+</div>
+
+{% endfor %}
+    </div>
+{% endblock %}
+</body>
+</html>

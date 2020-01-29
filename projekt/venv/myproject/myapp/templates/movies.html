@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CinemaLand: Filmy</title>
+</head>
+<body>
+{% extends "navigationbar.html" %}
+{% block content %}
+<div class="card-group card-columns px-md-5 p-2">
+{% for movie in movies %}
+<div class="border card col-sm-3 m-2" style="width: 18rem;">
+  <img class="card-img-top" src="{{movie.image.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{movie.title}}</h5>
+    <p class="card-text">{{movie.description}}</p>
+    <a href="{% url 'shows' movie.id%}" class="btn btn-secondary">Więcej</a>
+
+</div>
+</div>
+{% endfor %}
+
+</div>
+{% endblock %}
+</body>
+</html>

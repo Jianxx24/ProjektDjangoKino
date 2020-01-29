@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+<form class="rounded-lg text-white mt-3 p-5 container w-25 shadow-lg bg-dark form-group col px-md-5" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class='mt-2 btn btn-secondary'>Zarejestruj</button>
+</form>
+{% endblock %}
+</body>
+</html>

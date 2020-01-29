@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CinemaLand: Seanse</title>
+</head>
+<body>
+{% extends "navigationbar.html" %}
+{% block content %}
+
+<form class="border border-dark rounded container w-50 col px-md-5 mt-3 p-5 " method="post">
+    {% csrf_token %}
+    <div class="text-white text-center bg-dark w-75 col px-md-5 m-3 p-5 mx-auto"><h3>Ekran</h3></div>
+    {% for c in rows %}
+    <div class="row">
+    {% for r in c %}
+    <div class=" border  text-white {% if r.person %}bg-danger{% elif r.id in t %}bg-warning{% else %} bg-dark {% endif %} col-md-1 form-check form-check-inline">
+        <label class="form-check-label" for="checkbox"><p>{{r.seat.pos_x}}</p><br></label>
+        <input class="form-check-input " name="tickets" type="checkbox" id="checkbox" value="{{ r.seat.pos_x }}" {% if r.person or r.id in t %}disabled{% endif %}>
+    </div>
+    {% endfor %}
+    </div>
+    {% endfor %}
+    <button type="submit" class='mt-2 btn btn-secondary'>Zamów bilety</button>
+</form>
+{% endblock %}
+</body>
+</html>

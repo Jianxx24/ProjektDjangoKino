@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CinemaLand: Logowanie</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+{% if not request.user.is_authenticated %}
+<form class="rounded-lg text-white mt-3 p-5 container w-25 shadow-lg bg-dark form-group col px-md-5" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class='mt-2 btn btn-secondary'>Zaloguj</button>
+</form>
+{% else %}
+<div class="text-white align-items-middle rounded-lg mt-3 p-5 container w-25 shadow-lg bg-dark form-group"><p>Cześć {{ user.get_username }}</p>
+    <a class="btn btn-secondary" href="{% url 'logout' %}" role="button">Logout</a>
+</div>
+{% endif %}
+{% endblock %}
+</body>
+</html>
